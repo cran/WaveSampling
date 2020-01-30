@@ -1,4 +1,4 @@
-## ----setup, include = FALSE----------------------------------------------
+## ----setup, include = FALSE---------------------------------------------------
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -6,7 +6,7 @@ knitr::opts_chunk$set(
 library(WaveSampling)
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 # install.packages(sp)
 library(sp)
 library(sf)
@@ -19,11 +19,11 @@ meuse_sf <- st_as_sf(meuse, coords = c("x", "y"), crs = 28992, agr = "constant")
 X <- scale(as.matrix(meuse[,1:2]))
 pik <- inclusionprobabilities(meuse$copper,30)
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 s <- wave(X,pik)
 sum(s)
 
-## ----fig.width=5,fig.height=5--------------------------------------------
+## ----fig.width=5,fig.height=5-------------------------------------------------
 library(ggplot2)
 p <- ggplot()+
   geom_sf(data = meuse_sf,aes(size=copper),show.legend = 'point',shape = 1,stroke = 0.3)+
@@ -48,7 +48,7 @@ p <- ggplot()+
 p
   
 
-## ----fig.width=7,fig.height=5--------------------------------------------
+## ----fig.width=7,fig.height=5-------------------------------------------------
 
 library(sp)
 library(sampling)
@@ -78,7 +78,7 @@ BalancedSampling::sb(pik,as.matrix(meuse[,1:2]),which(s == 1))
 
 
 
-## ------------------------------------------------------------------------
+## -----------------------------------------------------------------------------
 
 W <- wpik(X,pik)
 W <- W - diag(diag(W))

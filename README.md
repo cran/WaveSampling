@@ -10,7 +10,9 @@ often needed that the sample is well spread over space. A new method to
 draw a sample from a population with spatial coordinates is proposed.
 This method is called `wave` (weakly associated vectors) sampling. It
 uses the less correlated vector to a spatial weights matrix to update
-the inclusion probabilities vector into a sample.
+the inclusion probabilities vector into a sample. For more details see
+Raphaël Jauslin and Yves Tillé (2019)
+<https://arxiv.org/abs/1910.13152>.
 
 ## Build
 
@@ -19,7 +21,13 @@ Status](https://travis-ci.org/RJauslin/WaveSampling.svg?branch=master)](https://
 
 ## Installation
 
-You can install the released version of the package `WaveSampling` with
+### CRAN version
+
+    install.packages("WaveSampling")
+
+### Latest version
+
+You can install the latest version of the package `WaveSampling` with
 the following command:
 
 ``` r
@@ -40,17 +48,17 @@ N <- 144
 n <- 48
 X <- cbind(runif(N),runif(N))
 head(X,10)
-#>             [,1]       [,2]
-#>  [1,] 0.65601358 0.03004647
-#>  [2,] 0.24101651 0.46091256
-#>  [3,] 0.29776035 0.17085750
-#>  [4,] 0.34909458 0.89883402
-#>  [5,] 0.93018147 0.87804812
-#>  [6,] 0.67000492 0.67711535
-#>  [7,] 0.27067015 0.05059434
-#>  [8,] 0.74374266 0.32661502
-#>  [9,] 0.32906968 0.53842066
-#> [10,] 0.06137976 0.73845408
+#>            [,1]      [,2]
+#>  [1,] 0.1345672 0.7266617
+#>  [2,] 0.2058343 0.5022601
+#>  [3,] 0.4913206 0.3194556
+#>  [4,] 0.3520863 0.1338913
+#>  [5,] 0.7891532 0.9072055
+#>  [6,] 0.3468061 0.1179934
+#>  [7,] 0.9940038 0.1593734
+#>  [8,] 0.9217319 0.3785051
+#>  [9,] 0.1591796 0.9871931
+#> [10,] 0.9690687 0.2438429
 ```
 
 Inclusion probabilities `pik` is set up all equal with the function
