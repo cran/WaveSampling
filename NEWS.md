@@ -1,5 +1,14 @@
 # NEWS for Package "WaveSampling"
+## WaveSampling 0.1.3
+  * change doc so that it does not require sampling package installation.
 
+## WaveSampling 0.1.2
+  * fix Debian installation
+  * add <doi:10.1007/s13253-020-00407-1>.
+  * remove ggvoronoi, sf and sp in suggested packages.
+  * remove travis
+  * remove 0LazyData: true
+ 
 ## WaveSampling 0.1.1
 
 ### patch  

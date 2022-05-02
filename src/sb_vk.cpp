@@ -43,11 +43,9 @@
 //' N <- 50
 //' n <- 10
 //' X <- as.matrix(cbind(runif(N),runif(N)))
-//' pik <- sampling::inclusionprobabilities(runif(N),n)
+//' pik <- rep(n/N,N)
 //' s <- wave(X,pik)
 //' v <- sb_vk(pik,X,s)
-//' 1/n*sum((v[which(v != 0)]-1)^2)
-//' BalancedSampling::sb(pik,X,which(s == 1))
 //' 
 //' @export
 // [[Rcpp::export]]
@@ -55,6 +53,9 @@ arma::vec sb_vk(arma::vec pik,arma::mat X,arma::vec s) {
   
   int N = X.n_rows;
   int ncol = X.n_cols;
+  
+  
+  
   
   
   arma::uvec s1 = find(s == 1); // 0 based

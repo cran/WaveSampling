@@ -37,7 +37,9 @@
 #' 
 #' @references
 #' Tillé, Y., Dickson, M.M., Espa, G., and Guiliani, D. (2018). Measuring the spatial balance of a sample: A new measure based on Moran's I index.
-#' \emph{Spatial Statistics}, 23, 182-192. \url{https://doi.org/10.1016/j.spasta.2018.02.001}
+#' \emph{Spatial Statistics}, 23, 182-192.
+#' 
+#' 
 #' 
 #' @seealso
 #' \code{\link{wpik}}
@@ -55,7 +57,7 @@
 #' 
 #' @export
 IB <- function(W, s) {
-    .Call(`_WaveSampling_IB`, W, s)
+    .Call('_WaveSampling_IB', PACKAGE = 'WaveSampling', W, s)
 }
 
 #' @title Squared Euclidean distances of the unit k.
@@ -107,7 +109,7 @@ IB <- function(W, s) {
 #'   distUnitk(X,k = 2,tore = FALSE,toreBound = -1)
 #' @export
 distUnitk <- function(X, k, tore, toreBound) {
-    .Call(`_WaveSampling_distUnitk`, X, k, tore, toreBound)
+    .Call('_WaveSampling_distUnitk', PACKAGE = 'WaveSampling', X, k, tore, toreBound)
 }
 
 #' @encoding UTF-8
@@ -222,15 +224,13 @@ NULL
 #' N <- 50
 #' n <- 10
 #' X <- as.matrix(cbind(runif(N),runif(N)))
-#' pik <- sampling::inclusionprobabilities(runif(N),n)
+#' pik <- rep(n/N,N)
 #' s <- wave(X,pik)
 #' v <- sb_vk(pik,X,s)
-#' 1/n*sum((v[which(v != 0)]-1)^2)
-#' BalancedSampling::sb(pik,X,which(s == 1))
 #' 
 #' @export
 sb_vk <- function(pik, X, s) {
-    .Call(`_WaveSampling_sb_vk`, pik, X, s)
+    .Call('_WaveSampling_sb_vk', PACKAGE = 'WaveSampling', pik, X, s)
 }
 
 #' @encoding UTF-8
@@ -296,8 +296,8 @@ sb_vk <- function(pik, X, s) {
 #' 
 #' N <- 50
 #' n <- 15
+#' pik <- rep(n/N,N)
 #' X <- as.matrix(cbind(runif(N),runif(N)))
-#' pik <- sampling::inclusionprobabilities(runif(N),n)
 #' s <- wave(X,pik)
 #' 
 #' #------------
@@ -324,7 +324,7 @@ sb_vk <- function(pik, X, s) {
 #' 
 #' @export
 wave <- function(X, pik, bound = 1.0, tore = FALSE, shift = FALSE, toreBound = -1, comment = FALSE, fixedSize = TRUE) {
-    .Call(`_WaveSampling_wave`, X, pik, bound, tore, shift, toreBound, comment, fixedSize)
+    .Call('_WaveSampling_wave', PACKAGE = 'WaveSampling', X, pik, bound, tore, shift, toreBound, comment, fixedSize)
 }
 
 #' @encoding UTF-8
@@ -382,12 +382,12 @@ wave <- function(X, pik, bound = 1.0, tore = FALSE, shift = FALSE, toreBound = -
 #' N <- 25
 #' n <- 5
 #' X <- as.matrix(cbind(runif(N),runif(N)))
-#' pik <- sampling::inclusionprobabilities(runif(N),n)
+#' pik <- rep(n/N,N)
 #' W <- wpik(X,pik)
 #' 
 #' @export
 wpik <- function(X, pik, bound = 1.0, tore = FALSE, shift = FALSE, toreBound = -1.0) {
-    .Call(`_WaveSampling_wpik`, X, pik, bound, tore, shift, toreBound)
+    .Call('_WaveSampling_wpik', PACKAGE = 'WaveSampling', X, pik, bound, tore, shift, toreBound)
 }
 
 #' @encoding UTF-8
@@ -436,7 +436,7 @@ wpik <- function(X, pik, bound = 1.0, tore = FALSE, shift = FALSE, toreBound = -
 #' 
 #' @references 
 #' Tillé, Y., Dickson, M.M., Espa, G., and Guiliani, D. (2018). Measuring the spatial balance of a sample: A new measure based on Moran's I index.
-#' \emph{Spatial Statistics}, 23, 182-192. \url{https://doi.org/10.1016/j.spasta.2018.02.001}
+#' \emph{Spatial Statistics}, 23, 182-192.
 #' 
 #' @seealso
 #' \code{\link{wpik}}, \code{\link{distUnitk}}, \code{\link{wave}}.
@@ -445,11 +445,11 @@ wpik <- function(X, pik, bound = 1.0, tore = FALSE, shift = FALSE, toreBound = -
 #' N <- 25
 #' n <- 5
 #' X <- as.matrix(cbind(runif(N),runif(N)))
-#' pik <- sampling::inclusionprobabilities(runif(N),n)
+#' pik <- rep(n/N,N)
 #' W <- wpikInv(X,pik)
 #' 
 #' @export
 wpikInv <- function(X, pik, tore = FALSE, shift = FALSE, toreBound = -1) {
-    .Call(`_WaveSampling_wpikInv`, X, pik, tore, shift, toreBound)
+    .Call('_WaveSampling_wpikInv', PACKAGE = 'WaveSampling', X, pik, tore, shift, toreBound)
 }
 
